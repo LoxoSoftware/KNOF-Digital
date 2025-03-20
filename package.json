@@ -1,0 +1,37 @@
+{
+  "name": "KNOF Digital",
+  "author": "LoxoSoftware",
+  "version": "1.0.0",
+  "keywords": [],
+  "dependencies": {},
+  "pebble": {
+    "displayName": "KNOF Digital",
+    "uuid": "e7eb87a6-e551-4c3c-b83e-e4be8b7bd8f2",
+    "sdkVersion": "3",
+    "enableMultiJS": true,
+    "targetPlatforms": [
+      "aplite",
+      "basalt"
+    ],
+    "watchapp": {
+      "watchface": true
+    },
+    "messageKeys": [
+      "dummy"
+    ],
+    "resources": {
+      "media": [
+        {
+          "name": "BMP_DIGIT",
+          "type": "png",
+          "file": "digit.png"
+        },
+        {
+          "name": "BMP_FONT",
+          "type": "png",
+          "file": "font.png"
+        }
+      ]
+    }
+  }
+}
