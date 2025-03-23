@@ -45,6 +45,9 @@ const uint8_t chmap[64]= //Starts at 32 in the ASCII table
     //      - <bolt> takes place of '$'
 };
 
+const char* weekdays_en[7]= { "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT" };
+//const char* weekdays_it[7]= { "DOM", "LUN", "MAR", "MER", "GIO", "VEN", "SAB" };
+
 void face_draw_row(GContext* ctx, uint8_t row, char* text)
 {
     graphics_context_set_compositing_mode(ctx, GCompOpSet);
@@ -87,34 +90,7 @@ static void update_time()
                                             "%H:%M" : "%I:%M", tick_time);
     strftime(date_str, sizeof(date_str), "%d/%m", tick_time);
     strftime(day_str, sizeof(day_str), "%w", tick_time);
-
-    switch (*day_str)
-    {
-        case '1':
-            snprintf(day_str, sizeof(day_str), "  MON");
-            break;
-        case '2':
-            snprintf(day_str, sizeof(day_str), "  TUE");
-            break;
-        case '3':
-            snprintf(day_str, sizeof(day_str), "  WED");
-            break;
-        case '4':
-            snprintf(day_str, sizeof(day_str), "  THU");
-            break;
-        case '5':
-            snprintf(day_str, sizeof(day_str), "  FRI");
-            break;
-        case '6':
-            snprintf(day_str, sizeof(day_str), "  SAT");
-            break;
-        case '7':
-            snprintf(day_str, sizeof(day_str), "  SUN");
-            break;
-        default:
-            snprintf(day_str, sizeof(day_str), "  ///");
-            break;
-    }
+    snprintf(day_str, sizeof(day_str), "  %s", weekdays_en[day_str[0]-'0']);
 
     layer_mark_dirty(window_get_root_layer(win_face));
 }
